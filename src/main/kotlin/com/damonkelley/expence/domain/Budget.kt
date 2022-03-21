@@ -1,18 +1,14 @@
 package com.damonkelley.expence.domain
 
-import com.damonkelley.expence.application.AddAccount
-import com.damonkelley.expence.application.StartBudget
+class Budget(val events: Events = emptyList()) {
+    fun handle(command: Command): Events {
+        return when(command) {
+            is StartBudget -> handle(command)
+            is AddAccount -> handle(command)
+        }
+    }
 
-interface HandleStartBudget {
-    fun handle(command: StartBudget): Events
-}
-
-interface HandleAddAccount {
-    fun handle(command: AddAccount): Events
-}
-
-class Budget(val events: Events = emptyList()): HandleStartBudget, HandleAddAccount {
-    override fun handle(command: StartBudget): Events {
+   private fun handle(command: StartBudget): Events {
         return listOf(
             BudgetStarted(
                 id = command.id,
@@ -21,7 +17,7 @@ class Budget(val events: Events = emptyList()): HandleStartBudget, HandleAddAcco
         )
     }
 
-    override fun handle(command: AddAccount): Events {
+    private fun handle(command: AddAccount): Events {
         return listOf(
             AccountAdded(
                 id = command.id,
