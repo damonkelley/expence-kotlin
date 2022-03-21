@@ -6,7 +6,7 @@ import com.damonkelley.expence.domain.budgets.Command
 
 class BudgetService(private val eventStore: EventStore) {
     fun send(command: Command, trace: Trace = Trace(command)) {
-        eventStore.load(command.id())
+        eventStore.load(command)
             .let { Budget(it).handle(command) }
             .let { eventStore.add(it, trace) }
     }

@@ -1,10 +1,9 @@
-package com.damonkelley.expence.domain
+package com.damonkelley.expence.domain.budgets
 
+import com.damonkelley.expence.domain.AccountId
+import com.damonkelley.expence.domain.BudgetId
+import com.damonkelley.expence.domain.Name
 import com.damonkelley.expence.domain.accounts.AccountAdded
-import com.damonkelley.expence.domain.budgets.AddAccount
-import com.damonkelley.expence.domain.budgets.Budget
-import com.damonkelley.expence.domain.budgets.BudgetStarted
-import com.damonkelley.expence.domain.budgets.StartBudget
 import io.kotest.core.spec.style.BehaviorSpec
 import io.kotest.matchers.shouldBe
 import java.util.*

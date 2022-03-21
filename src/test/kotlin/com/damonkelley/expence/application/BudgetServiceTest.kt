@@ -31,7 +31,7 @@ class BudgetServiceTest : BehaviorSpec({
                 ), Trace(accountId)
             )
 
-            eventStore should havePublishedEvents(accountId.id())
+            eventStore should havePublishedEvents(accountId)
         }
     }
 })
