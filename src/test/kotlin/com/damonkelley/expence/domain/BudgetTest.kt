@@ -1,12 +1,17 @@
 package com.damonkelley.expence.domain
 
+import com.damonkelley.expence.domain.accounts.AccountAdded
+import com.damonkelley.expence.domain.budgets.AddAccount
+import com.damonkelley.expence.domain.budgets.Budget
+import com.damonkelley.expence.domain.budgets.BudgetStarted
+import com.damonkelley.expence.domain.budgets.StartBudget
 import io.kotest.core.spec.style.BehaviorSpec
 import io.kotest.matchers.shouldBe
 import java.util.*
 
 class BudgetTest : BehaviorSpec({
     Given("A StartBudgetCommand") {
-        val command = StartBudget(id = UUID.randomUUID(), name = Name("My first budget"))
+        val command = StartBudget(id = BudgetId(UUID.randomUUID()), name = Name("My first budget"))
 
         When("the command is handled") {
             Then("it will have a BudgetStarted event") {
@@ -24,7 +29,7 @@ class BudgetTest : BehaviorSpec({
 
     Given("An AddAccount command") {
         val command = AddAccount(
-            id = UUID.randomUUID(),
+            id = AccountId(UUID.randomUUID()),
             budgetId = BudgetId(UUID.randomUUID()),
             name = Name("My first budget")
         )

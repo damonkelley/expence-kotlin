@@ -1,4 +1,7 @@
-package com.damonkelley.expence.domain
+package com.damonkelley.expence.domain.budgets
+
+import com.damonkelley.expence.domain.*
+import com.damonkelley.expence.domain.accounts.AccountAdded
 
 class Budget(val events: Events = emptyList()) {
     fun handle(command: Command): Events {

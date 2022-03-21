@@ -2,11 +2,9 @@ package com.damonkelley.expence.application.ports.outgoing
 
 import com.damonkelley.expence.application.Trace
 import com.damonkelley.expence.domain.Events
-
-@JvmInline
-value class Stream(val value: String)
+import java.util.*
 
 interface EventStore {
-    fun load(stream: Stream): Events
+    fun load(stream: UUID): Events
     fun add(events: Events, trace: Trace): Events
 }

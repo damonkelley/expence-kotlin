@@ -1,5 +1,6 @@
 package com.damonkelley.expence.application
 
+import com.damonkelley.expence.domain.Id
 import java.util.*
 
 data class Trace(
@@ -7,6 +8,5 @@ data class Trace(
     val correlationId: UUID,
     val causationId: UUID,
 ) {
-    constructor(id: UUID): this(id=id, correlationId = id, causationId=id)
-    constructor(id: UUID, trace: Trace): this(id=id, correlationId = trace.correlationId, causationId=trace.id)
+    constructor(id: Id): this(id=id.id(), correlationId = id.id(), causationId=id.id())
 }
